@@ -1,8 +1,10 @@
 from selenium import webdriver
 import keyboard
 import time
+from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
 
 class monkeytype_cheater:
+    
     def __init__(self):
         options = webdriver.ChromeOptions()
         options.add_argument("--disable-notifications")
@@ -12,40 +14,32 @@ class monkeytype_cheater:
         self.driver.get("https://monkeytype.com/")
 
     def cookies_selection(self):
-        time.sleep(2)
+        time.sleep(1)
         button = self.driver.find_element(by = "class name", value = "rejectAll")
-        time.sleep(2)
         try:
             button.click()
-            time.sleep(2)
-        except:
-            pass
+            time.sleep(1)
+        except Exception as e:
+            print(e)
 
-    def get_sentence(self):
+    def solver(self):
         self.cookies_selection()
-        self.driver.refresh()
-        time.sleep(2)
-        words_set = self.driver.find_element(by = "id", value = "wordsWrapper")
-        try:
-            words_set.click()
-        except:
-            pass
 
         words = self.driver.find_elements(by = "class name", value = "word")
-        sentence = ""
-        for word in words:
-            letters = word.find_elements(by = "tag name", value = "letter")
-            for letter in letters:
-                if not "correct" in letter.get_attribute("class"):
+        try:
+            while len(words) != 0:
+                sentence = ""
+                active_word = self.driver.find_element(by = "class name", value ="word.active")
+                letters = active_word.find_elements(by = "tag name", value = "letter")
+                for letter in letters:
                     sentence = sentence + letter.text
-            sentence = sentence + " "
-        print(sentence)
-        return sentence
+                sentence = sentence + " "
+                keyboard.write(sentence)
+                words = self.driver.find_elements(by = "class name", value = "word")
+        except (StaleElementReferenceException, NoSuchElementException):
+            pass 
 
-    def start(self):
-        sentence = self.get_sentence()
-        keyboard.write(sentence)
-    
 if __name__ == "__main__":
     typer = monkeytype_cheater()
-    typer.start()
+    typer.solver()
+    input("Press Enter to Exit.")
