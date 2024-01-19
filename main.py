@@ -1,5 +1,6 @@
 from selenium import webdriver
 import keyboard
+import time
 
 class monkeytype_cheater:
     def __init__(self):
@@ -10,7 +11,17 @@ class monkeytype_cheater:
 
         self.driver.get("https://monkeytype.com/")
 
+    def cookies_selection(self):
+        time.sleep(2)
+        button = self.driver.find_elements(by = "class name", value = "active acceptAll")
+        time.sleep(2)
+        try:
+            button.click()
+        except:
+            pass
+
     def get_sentence(self):
+        self.cookies_selection()
         words_set = self.driver.find_element(by = "id", value = "wordsWrapper")
         try:
             words_set.click()
@@ -23,7 +34,7 @@ class monkeytype_cheater:
             letters = word.find_elements(by = "tag name", value = "letter")
             for letter in letters:
                 if not "correct" in letter.get_attribute("class"):
-                    sentence = sentence + letter.next()
+                    sentence = sentence + letter.text
             sentence = sentence + " "
         print(sentence)
 
