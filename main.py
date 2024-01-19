@@ -22,7 +22,7 @@ class monkeytype_cheater:
         except Exception as e:
             print(e)
 
-    def solver(self):
+    def solver(self, delay)
         self.cookies_selection()
 
         words = self.driver.find_elements(by = "class name", value = "word")
@@ -35,11 +35,13 @@ class monkeytype_cheater:
                     sentence = sentence + letter.text
                 sentence = sentence + " "
                 keyboard.write(sentence)
+                time.sleep(delay)
                 words = self.driver.find_elements(by = "class name", value = "word")
         except (StaleElementReferenceException, NoSuchElementException):
             pass 
 
 if __name__ == "__main__":
+    delay = float(input("Enter the delay in seconds (e.g., 0.1): "))
     typer = monkeytype_cheater()
     typer.solver()
     input("Press Enter to Exit.")
