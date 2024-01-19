@@ -18,11 +18,11 @@ class monkeytype_cheater:
         button = self.driver.find_element(by = "class name", value = "rejectAll")
         try:
             button.click()
-            time.sleep(1)
+            time.sleep(10)
         except Exception as e:
             print(e)
 
-    def solver(self, delay)
+    def solver(self, delay):
         self.cookies_selection()
 
         words = self.driver.find_elements(by = "class name", value = "word")
@@ -43,5 +43,5 @@ class monkeytype_cheater:
 if __name__ == "__main__":
     delay = float(input("Enter the delay in seconds (e.g., 0.1): "))
     typer = monkeytype_cheater()
-    typer.solver()
+    typer.solver(delay)
     input("Press Enter to Exit.")
