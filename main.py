@@ -13,20 +13,24 @@ class monkeytype_cheater:
 
     def cookies_selection(self):
         time.sleep(2)
-        button = self.driver.find_elements(by = "class name", value = "active acceptAll")
+        button = self.driver.find_element(by = "class name", value = "rejectAll")
         time.sleep(2)
         try:
             button.click()
+            time.sleep(2)
+            self.driver.refresh()
         except:
             pass
 
     def get_sentence(self):
         self.cookies_selection()
-        words_set = self.driver.find_element(by = "id", value = "wordsWrapper")
-        try:
-            words_set.click()
-        except:
-            pass
+        self.driver.refresh()
+        # time.sleep(2)
+        # words_set = self.driver.find_element(by = "id", value = "wordsWrapper")
+        # try:
+        #     words_set.click()
+        # except:
+        #     pass
 
         words = self.driver.find_elements(by = "class name", value = "word")
         sentence = ""
@@ -36,7 +40,8 @@ class monkeytype_cheater:
                 if not "correct" in letter.get_attribute("class"):
                     sentence = sentence + letter.text
             sentence = sentence + " "
-        print(sentence)
+            print(sentence)
+        return sentence
 
     def start(self):
         sentence = self.get_sentence()
