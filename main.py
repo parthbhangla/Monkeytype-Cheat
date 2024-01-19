@@ -18,7 +18,7 @@ class monkeytype_cheater:
         button = self.driver.find_element(by = "class name", value = "rejectAll")
         try:
             button.click()
-            time.sleep(10)
+            time.sleep(1)
         except Exception as e:
             print(e)
 
@@ -38,7 +38,14 @@ class monkeytype_cheater:
                 time.sleep(delay)
                 words = self.driver.find_elements(by = "class name", value = "word")
         except (StaleElementReferenceException, NoSuchElementException):
-            pass 
+            pass
+        finally:
+            time.sleep(2)
+            self.print_stats()
+
+    def print_stats(self):
+        wpm = self.driver.find_element(by = "class name", value = ".group.wpm") 
+        print(wpm)
 
 if __name__ == "__main__":
     delay = float(input("Enter the delay in seconds (e.g., 0.1): "))
