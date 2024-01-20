@@ -25,6 +25,8 @@ pip install -r typemonkey/requirements.txt
 py typemonkey/main.py
 ```
 
+You can change the time in time.sleep() in the cookies_selection function to increase or decrease the time you have to select a mode on the monkeytype page it opens up. Also, you can change the delay it asks you in the input for to increase or decrease the speed.
+
 ## Contributions
 
 All contributions are welcome. Fork the repository and open a pull request.
