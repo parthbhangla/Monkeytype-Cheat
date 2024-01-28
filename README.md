@@ -16,13 +16,14 @@ I took inspiration from <a href="https://github.com/dhravya" target="_blank">Dhr
 
 ```sh
 git clone https://github.com/parthbhangla/monkeytype-cheater
-pip install -r typemonkey/requirements.txt
+cd monkeytype-cheater
+pip install -r requirements.txt
 ```
 
 ## Usage
 
 ```sh
-py typemonkey/main.py
+py main.py
 ```
 
 You can change the time in time.sleep() in the cookies_selection function to increase or decrease the time you have to select a mode on the monkeytype page it opens up. Also, you can change the delay it asks you in the input for to increase or decrease the speed.
