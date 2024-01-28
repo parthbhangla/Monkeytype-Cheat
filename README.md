@@ -15,8 +15,8 @@ I took inspiration from <a href="https://github.com/dhravya" target="_blank">Dhr
 ## Install
 
 ```sh
-git clone https://github.com/parthbhangla/monkeytype-cheater
-cd monkeytype-cheater
+git clone https://github.com/parthbhangla/Monkeytype-Cheat
+cd Monkeytype-Cheat
 pip install -r requirements.txt
 ```
 
