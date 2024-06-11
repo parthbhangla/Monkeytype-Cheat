@@ -34,5 +34,5 @@ All contributions are welcome. Fork the repository and open a pull request.
 
 ## Author
 
-Twitter: [@myfknlifemate](https://twitter.com/myfknlifemate)
+Twitter: [@parthbhangla](https://twitter.com/parthbhangla)
 Github: [@parthbhangla](https://github.com/parthbhangla)
